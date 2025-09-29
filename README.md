@@ -1,4 +1,4 @@
 # frontend-and-backend-practice
 контрольная работа №1 
 ### Мой сайт
-**[Посмотреть сайт на GitHub Pages](https://maksimsuperstarr.github.io/frontend-and-backend-practice/)**
+**[Посмотреть сайт на GitHub Pages](https://maksimsuperstarr.github.io/frontend-and-backend-control-work/frontend-and-backend-practice/index.html)**
