@@ -2,69 +2,235 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Семестровая работа - Максим</title>
-    <link rel="stylesheet" href="style/styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Главная — Портфолио Максима</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- (необязательно) твои стили, если нужно: -->
+    <!-- <link rel="stylesheet" href="style/styles.css"> -->
 </head>
 
-<body>
-    <div class="page-container">
-        <div class="header">
-            <h1>Портфолио разработчика</h1>
-        </div>
-
-        <div class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/news.html">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/practices.html">Практики</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/goods.html">Товары</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
-            </ul>
-        </div>
-
-        <div class="content">
-            <div class="profile-header">
-                <h1 class="profile-title">Информация об авторе</h1>
-                <img class="profile-photo" src="images/photo.png" alt="Фото Максима">
-                <h2 class="profile-name">Максим Побереев</h2>
-                <p class="profile-group">ЭФБО-12-24</p>
-            </div>
-
-            <div class="about-me">
-                <h2>Обо мне</h2>
-                <p>Учусь на втором курсе в МИРЭА.</p>
-                <p>Пробегаю 10 км утром в темпе 5:40 за км.</p>
-                <p>Довольно часто нахожусь в сети интернет (прогаю), но большую часть времени провожу в реальном
-                    времени.</p>
-            </div>
-
-            <div class="skills-container">
-                <div class="skill-tag">HTML</div>
-                <div class="skill-tag">CSS</div>
-                <div class="skill-tag">JavaScript</div>
-                <div class="skill-tag">Git</div>
-            </div>
-
-            <div class="experience-section">
-                <h2 class="section-title">Мой опыт работы</h2>
-                <div class="experience-card">
-                    <h3 class="experience-title">Первый опыт работы</h3>
-                    <p class="experience-desc">Работал два дня на крыше стройки летом 2023 года</p>
-                </div>
-                <div class="experience-card">
-                    <h3 class="experience-title">Больше нигде не работал</h3>
-                    <p class="experience-desc">Стройка сделала меня мужчиной.</p>
-                    <p class="experience-desc">Больше не нуждаюсь в работе. Занимаюсь своими делами.</p>
+<body class="bg-light">
+    <div class="container-fluid p-0">
+        <!-- Header -->
+        <header class="bg-primary text-white py-4">
+            <div class="container">
+                <div class="row align-items-center g-3">
+                    <div class="col">
+                        <h1 class="h3 mb-1">Портфолио разработчика</h1>
+                        <p class="mb-0 opacity-75">Максим Побереев</p>
+                    </div>
+                    <div class="col-auto text-nowrap">
+                        <span class="badge bg-light text-primary">ЭФБО-12-24</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </header>
 
-        <div class="footer">
-            <p>© 2025 Семестровая работа. Все права защищены.</p>
-        </div>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand d-lg-none" href="index.html">Меню</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">
+                                <i class="bi bi-house me-1"></i>Главная
+                            </a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="pages/news.html"><i
+                                    class="bi bi-newspaper me-1"></i>Новости</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/practices.html"><i
+                                    class="bi bi-code-slash me-1"></i>Практики</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/goods.html"><i
+                                    class="bi bi-cart me-1"></i>Товары</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/contacts.html"><i
+                                    class="bi bi-telephone me-1"></i>Контакты</a></li>
+                    </ul>
+
+                    <!-- переключатель темы bootstrap (пример) -->
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-light btn-sm" data-bs-theme-value="light" id="themeLight"
+                            title="Светлая тема"><i class="bi bi-sun"></i></button>
+                        <button class="btn btn-outline-light btn-sm" data-bs-theme-value="dark" id="themeDark"
+                            title="Тёмная тема"><i class="bi bi-moon-stars"></i></button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main -->
+        <main class="container my-4">
+            <!-- Профиль -->
+            <section class="mb-5">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-3 text-center mb-3 mb-md-0">
+                                <img src="images/photo.png" alt="Фото Максима" class="img-fluid rounded-circle"
+                                    style="width:150px;height:150px;object-fit:cover;">
+                            </div>
+                            <div class="col-md-9">
+                                <h2 class="card-title h4 text-primary mb-2">Максим Побереев</h2>
+                                <p class="card-text text-muted mb-2">
+                                    <i class="bi bi-bookmark-check-fill text-primary me-1"></i>
+                                    Студент группы ЭФБО-12-24, МИРЭА
+                                </p>
+                                <p class="card-text">
+                                    Люблю веб-разработку и пет-проекты. Бегаю 10 км в темпе 5:40/км.
+                                    Большую часть времени — в коде, но жизнь — офлайн :)
+                                </p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <span class="badge bg-primary">HTML</span>
+                                    <span class="badge bg-success">CSS</span>
+                                    <span class="badge bg-info text-dark">JavaScript</span>
+                                    <span class="badge bg-dark">Git</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Обо мне -->
+            <section class="mb-5">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h3 class="h5 mb-0"><i class="bi bi-person-circle text-primary me-1"></i>Обо мне</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-2">Учусь на втором курсе в МИРЭА.</p>
+                        <p class="mb-2">Пробегаю 10 км утром в темпе 5:40 за км.</p>
+                        <p class="mb-0">Довольно часто нахожусь в сети интернет (прогаю), но большую часть времени
+                            провожу в реальном времени.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Навыки (progress) -->
+            <section class="mb-5">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h3 class="h5 mb-0"><i class="bi bi-tools text-primary me-1"></i>Мои навыки</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>HTML</span><span class="text-primary">90%</span>
+                                    </div>
+                                    <div class="progress" style="height:8px;">
+                                        <div class="progress-bar bg-primary" style="width:90%"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>CSS</span><span class="text-primary">85%</span>
+                                    </div>
+                                    <div class="progress" style="height:8px;">
+                                        <div class="progress-bar bg-success" style="width:85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>JavaScript</span><span class="text-primary">75%</span>
+                                    </div>
+                                    <div class="progress" style="height:8px;">
+                                        <div class="progress-bar bg-info" style="width:75%"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>Git</span><span class="text-primary">70%</span>
+                                    </div>
+                                    <div class="progress" style="height:8px;">
+                                        <div class="progress-bar bg-dark" style="width:70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Чипы навыков -->
+                        <div class="mt-3 d-flex flex-wrap gap-2">
+                            <span class="badge text-bg-primary"><i class="bi bi-code-slash me-1"></i>Верстка</span>
+                            <span class="badge text-bg-secondary"><i class="bi bi-phone me-1"></i>Адаптив</span>
+                            <span class="badge text-bg-warning"><i class="bi bi-lightning me-1"></i>Оптимизация</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Опыт / проекты -->
+            <section class="mb-5">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h3 class="h5 mb-0"><i class="bi bi-briefcase-fill text-primary me-1"></i>Мой опыт работы</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Первый опыт работы</h5>
+                                        <p class="card-text text-muted">Работал два дня на крыше стройки летом 2023 года
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Больше нигде не работал</h5>
+                                        <p class="card-text text-muted">Стройка сделала меня мужчиной.</p>
+                                        <p class="card-text text-muted mb-0">Больше не нуждаюсь в работе. Занимаюсь
+                                            своими делами.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container">
+                <div class="row align-items-center g-3">
+                    <div class="col-md-6">
+                        <p class="mb-0">&copy; 2025 Портфолио Максима. Все права защищены.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <a href="pages/contacts.html" class="text-white text-decoration-none me-3">Контакты</a>
+                        <a href="#" class="text-white text-decoration-none">Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
+
+    <!-- Bootstrap Bundle (JS + Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- мини-скрипт для переключения темы (опционально) -->
+    <script>
+        // Bootstrap 5.3 поддерживает CSS-переменную data-bs-theme на <html> или <body>
+        const setTheme = v => document.documentElement.setAttribute('data-bs-theme', v);
+        document.getElementById('themeLight')?.addEventListener('click', () => setTheme('light'));
+        document.getElementById('themeDark')?.addEventListener('click', () => setTheme('dark'));
+        // можно сохранить в localStorage при желании
+    </script>
 </body>
 
 </html>

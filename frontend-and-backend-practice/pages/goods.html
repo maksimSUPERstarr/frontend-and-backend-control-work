@@ -2,80 +2,88 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Товары - Семестровая работа</title>
-    <link rel="stylesheet" href="../style/styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Товары</title>
+    <link rel="stylesheet" href="../style/styles.css" />
 </head>
 
 <body>
-    <div class="page-container">
-        <div class="header">
-            <h1>Наши товары</h1>
-        </div>
+    <div class="page">
+        <header class="header">
+            <h1 class="header__title">Портфолио разработчика</h1>
+        </header>
 
-        <div class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
-                <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
-                <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+                <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
+                <li class="nav__item"><a class="nav__link" href="practices.html">Практики</a></li>
+                <li class="nav__item nav__item--active"><a class="nav__link" href="goods.html">Товары</a></li>
+                <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
             </ul>
-        </div>
+        </nav>
 
-        <div class="content">
-            <h2 class="section-title">Каталог товаров</h2>
-
-            <div class="goods-container">
-                <!-- Товар 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="../images/goods1.jpg" alt="Видео привет от Кости Волкова"
-                            onerror="this.src='https://via.placeholder.com/300x200?text=Видео+привет'">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Видео привет!</h3>
-                        <p class="product-description">Видео привет от Кости Волкова</p>
-                        <div class="product-price">200 ₽</div>
-                        <button class="buy-btn">Добавить в корзину</button>
-                    </div>
-                </div>
-
-                <!-- Товар 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="../images/goods2.jpg" alt="Туфли Vivienne Westwood"
-                            onerror="this.src='https://via.placeholder.com/300x200?text=Туфли+Vivienne+Westwood'">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Туфли Vivienne Westwood</h3>
-                        <p class="product-description">Туфли Vivienne Westwood оптом</p>
-                        <div class="product-price">11.990 ₽</div>
-                        <button class="buy-btn">Добавить в корзину</button>
-                    </div>
-                </div>
-
-                <!-- Товар 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="../images/goods3.jpg" alt="Фото с Криштиану Роналду"
-                            onerror="this.src='https://via.placeholder.com/300x200?text=Фото+с+Роналду'">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Фото с кумиром</h3>
-                        <p class="product-description">Фото с Криштиану Роналду в Москве</p>
-                        <div class="product-price">8.990 ₽</div>
-                        <button class="buy-btn">Добавить в корзину</button>
-                    </div>
-                </div>
+        <main class="main">
+            <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
+                <button class="button button--primary" id="themeToggle" type="button">Тема</button>
             </div>
-        </div>
 
-        <div class="footer">
-            <p>© 2025 Семестровая работа. Все права защищены.</p>
-        </div>
+            <section class="products">
+                <h2 class="projects__title">Каталог товаров</h2>
+
+                <div class="products__grid">
+                    <!-- Товар 1 -->
+                    <div class="product-card">
+                        <div class="product-card__image">
+                            <img src="../images/goods1.jpg" alt="Видео привет от Кости Волкова"
+                                onerror="this.src='https://via.placeholder.com/300x200?text=Видео+привет'">
+                        </div>
+                        <div class="product-card__info">
+                            <h3 class="product-card__title">Видео привет!</h3>
+                            <p class="product-card__desc">Видео привет от Кости Волкова</p>
+                            <div class="product-price">200 ₽</div>
+                            <button class="button button--primary product-card__buy">Добавить в корзину</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 2 -->
+                    <div class="product-card">
+                        <div class="product-card__image">
+                            <img src="../images/goods2.jpg" alt="Туфли Vivienne Westwood"
+                                onerror="this.src='https://via.placeholder.com/300x200?text=Туфли+Vivienne+Westwood'">
+                        </div>
+                        <div class="product-card__info">
+                            <h3 class="product-card__title">Туфли Vivienne Westwood</h3>
+                            <p class="product-card__desc">Туфли Vivienne Westwood оптом</p>
+                            <div class="product-price">11.990 ₽</div>
+                            <button class="button button--primary product-card__buy">Добавить в корзину</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 3 -->
+                    <div class="product-card">
+                        <div class="product-card__image">
+                            <img src="../images/goods3.jpg" alt="Фото с Криштиану Роналду"
+                                onerror="this.src='https://via.placeholder.com/300x200?text=Фото+с+Роналду'">
+                        </div>
+                        <div class="product-card__info">
+                            <h3 class="product-card__title">Фото с кумиром</h3>
+                            <p class="product-card__desc">Фото с Криштиану Роналду в Москве</p>
+                            <div class="product-price">8.990 ₽</div>
+                            <button class="button button--primary product-card__buy">Добавить в корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">© 2025 Семестровая работа. Все права защищены.</p>
+        </footer>
     </div>
+
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

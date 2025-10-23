@@ -2,66 +2,73 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Практики - Семестровая работа</title>
-    <link rel="stylesheet" href="../style/styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Практики</title>
+    <link rel="stylesheet" href="../style/styles.css" />
 </head>
 
 <body>
-    <div class="page-container">
-        <div class="header">
-            <h1>Практические занятия</h1>
-        </div>
+    <div class="page">
+        <header class="header">
+            <h1 class="header__title">Портфолио разработчика</h1>
+        </header>
 
-        <div class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
-                <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
-                <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+                <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
+                <li class="nav__item nav__item--active"><a class="nav__link" href="practices.html">Практики</a></li>
+                <li class="nav__item"><a class="nav__link" href="goods.html">Товары</a></li>
+                <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
             </ul>
-        </div>
+        </nav>
 
-        <div class="content">
-            <h2 class="section-title">Мои практические работы</h2>
-
-            <div class="practices-container">
-                <div class="practice-item">
-                    <h3 class="practice-title">Практика 1: Основы HTML</h3>
-                    <p class="practice-description">Создание базовой структуры сайта с семантической разметкой</p>
-                    <div class="practice-tags">
-                        <span class="practice-tag">HTML5</span>
-                        <span class="practice-tag">Семантика</span>
-                    </div>
-                </div>
-
-                <div class="practice-item">
-                    <h3 class="practice-title">Практика 2: Основы CSS</h3>
-                    <p class="practice-description">Стилизация элементов сайта с использованием современных техник</p>
-                    <div class="practice-tags">
-                        <span class="practice-tag">CSS3</span>
-                        <span class="practice-tag">Flexbox</span>
-                        <span class="practice-tag">Grid</span>
-                    </div>
-                </div>
-
-                <div class="practice-item">
-                    <h3 class="practice-title">Практика 3: Адаптивный дизайн</h3>
-                    <p class="practice-description">Создание отзывчивых интерфейсов для разных устройств</p>
-                    <div class="practice-tags">
-                        <span class="practice-tag">Media Queries</span>
-                        <span class="practice-tag">Mobile First</span>
-                    </div>
-                </div>
+        <main class="main">
+            <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
+                <button class="button button--primary" id="themeToggle" type="button">Тема</button>
             </div>
-        </div>
 
-        <div class="footer">
-            <p>© 2025 Семестровая работа. Все права защищены.</p>
-        </div>
+            <section class="projects">
+                <h2 class="projects__title">Мои практические работы</h2>
+                <div class="projects__grid">
+                    <article class="project-card">
+                        <h3 class="project-card__title">Практика 1: Основы HTML</h3>
+                        <p class="project-card__desc">Создание базовой структуры сайта с семантической разметкой</p>
+                        <div class="project-card__tags">
+                            <span class="project-card__tag">HTML5</span>
+                            <span class="project-card__tag">Семантика</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <h3 class="project-card__title">Практика 2: Основы CSS</h3>
+                        <p class="project-card__desc">Стилизация элементов сайта с использованием современных техник</p>
+                        <div class="project-card__tags">
+                            <span class="project-card__tag">CSS3</span>
+                            <span class="project-card__tag">Flexbox</span>
+                            <span class="project-card__tag">Grid</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <h3 class="project-card__title">Практика 3: Адаптивный дизайн</h3>
+                        <p class="project-card__desc">Создание отзывчивых интерфейсов для разных устройств</p>
+                        <div class="project-card__tags">
+                            <span class="project-card__tag">Media Queries</span>
+                            <span class="project-card__tag">Mobile First</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">© 2025 Семестровая работа. Все права защищены.</p>
+        </footer>
     </div>
+
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

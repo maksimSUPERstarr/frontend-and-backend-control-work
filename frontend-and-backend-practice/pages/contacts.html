@@ -2,67 +2,213 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты - Семестровая работа</title>
-    <link rel="stylesheet" href="../style/styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакты</title>
+    <link rel="stylesheet" href="../style/styles.css" />
+    <style>
+        /* локальные стили модалки */
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        dialog {
+            border: none;
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+            max-width: 500px;
+            width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #fff;
+            padding: 1.5rem;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+        }
+
+        .modal-content {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: .4rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: .75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.2rem;
+        }
+
+        .btn {
+            padding: .75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #2c3e50;
+            border: 2px solid #e9ecef;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        @media (max-width:600px) {
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="page-container">
-        <div class="header">
-            <h1>Контакты</h1>
-        </div>
+    <div class="page">
+        <header class="header">
+            <h1 class="header__title">Контакты</h1>
+        </header>
 
-        <div class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
-                <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
-                <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+                <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
+                <li class="nav__item"><a class="nav__link" href="practices.html">Практики</a></li>
+                <li class="nav__item"><a class="nav__link" href="goods.html">Товары</a></li>
+                <li class="nav__item nav__item--active"><a class="nav__link" href="contacts.html">Контакты</a></li>
             </ul>
-        </div>
+        </nav>
 
-        <div class="content">
-            <div class="contacts-container">
-                <h2 class="section-title">Наши контакты</h2>
-
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h3>Электронная почта</h3>
-                        <p>maksim@edu.mirea.ru</p>
-                    </div>
-
-                    <div class="contact-item">
-                        <h3>Телефон</h3>
-                        <p>+7 (916) 822-14-47</p>
-                    </div>
-
-                    <div class="contact-item">
-                        <h3>Адрес</h3>
-                        <p>г. Москва, пр. Вернадского, д. 78<br>МИРЭА - Российский технологический университет</p>
-                    </div>
-
-                    <div class="contact-item">
-                        <h3>График работы</h3>
-                        <p>Пн-Пт: 9:00 - 18:00<br>Сб-Вс: выходной</p>
-                    </div>
-                </div>
-
-                <!-- Кнопка "Позвоните мне" как требуется в задании -->
-                <div class="contact-actions">
-                    <button class="call-btn" onclick="alert('Функция звонка будет реализована позже')">
-                        Позвоните мне
-                    </button>
-                </div>
+        <main class="main">
+            <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
+                <button class="button button--primary" id="themeToggle" type="button">Тема</button>
             </div>
-        </div>
 
-        <div class="footer">
-            <p>© 2025 Семестровая работа. Все права защищены.</p>
-        </div>
+            <section class="contacts">
+                <h2 class="contacts__title">Наши контакты</h2>
+
+                <div class="contacts__list">
+                    <div class="contact-item">
+                        <h3 class="contact-item__title">Электронная почта</h3>
+                        <p class="contact-item__value">maksim@edu.mirea.ru</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3 class="contact-item__title">Телефон</h3>
+                        <p class="contact-item__value">+7 (916) 822-14-47</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3 class="contact-item__title">Адрес</h3>
+                        <p class="contact-item__value">г. Москва, пр. Вернадского, д. 78<br>МИРЭА - Российский
+                            технологический университет</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3 class="contact-item__title">График работы</h3>
+                        <p class="contact-item__value">Пн-Пт: 9:00 - 18:00<br>Сб-Вс: выходной</p>
+                    </div>
+                </div>
+
+                <div class="contacts__actions" style="text-align:center;margin-top:20px">
+                    <button class="button button--primary" id="contactOpenBtn" type="button">Связаться с нами</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">© 2025 Семестровая работа. Все права защищены.</p>
+        </footer>
+
+        <!-- Модальное окно -->
+        <dialog id="contactModal">
+            <div class="modal-header">
+                <h2>Форма обратной связи</h2>
+            </div>
+            <div class="modal-content">
+                <form id="feedbackForm" method="dialog">
+                    <div class="form-group">
+                        <label for="name">Имя <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="Введите ваше имя" />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Электронная почта <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="example@mail.ru" />
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Категория обращения <span class="required">*</span></label>
+                        <select id="category" name="category" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="technical">Техническая поддержка</option>
+                            <option value="commercial">Коммерческое предложение</option>
+                            <option value="cooperation">Сотрудничество</option>
+                            <option value="complaint">Жалоба</option>
+                            <option value="suggestion">Предложение</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Текст обращения <span class="required">*</span></label>
+                        <textarea id="message" name="message" required
+                            placeholder="Опишите вашу проблему или вопрос..."></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-secondary">Отмена</button>
+                        <button type="button" class="btn btn-primary" id="sendBtn">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
     </div>
+
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

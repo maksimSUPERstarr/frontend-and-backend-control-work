@@ -1,541 +1,565 @@
-/* ==== БАЗОВЫЕ СТИЛИ ==== */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* =========================
+   CSS VARIABLES (THEME)
+   ========================= */
+:root {
+    /* palette */
+    --color-main: #2c3e50;
+    --color-dark: #34495e;
+    --color-accent: #667eea;
+    --color-accent-2: #764ba2;
+    --color-accent-3: #3498db;
+    --color-text: #2c3e50;
+    --color-muted: #7f8c8d;
+    --color-white: #ffffff;
+    --color-light: #f8f9fa;
+    --color-light-2: #e9ecef;
+    --color-danger: #e74c3c;
+
+    /* layout */
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+    /* spacing */
+    --space-xs: 8px;
+    --space-sm: 12px;
+    --space-md: 20px;
+    --space-lg: 30px;
+    --space-xl: 40px;
+
+    /* typography */
+    --font-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --fz-sm: 14px;
+    --fz-md: 16px;
+    --fz-lg: 20px;
+    --fz-xl: 28px;
+    --fz-xxl: 32px;
+
+    /* transitions */
+    --tr-fast: 0.2s ease;
+    --tr: 0.3s ease;
+
+    /* backgrounds */
+    --bg-page: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-card: #fff;
+    --bg-elev: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+/* Dark theme */
+:root[data-theme="dark"] {
+    --color-main: #e0e6ef;
+    --color-dark: #1e2430;
+    --color-text: #e0e6ef;
+    --color-muted: #a8b0bd;
+    --color-white: #0f131a;
+    --color-light: #121826;
+    --color-light-2: #1b2232;
+    --bg-page: linear-gradient(135deg, #1b2a4b 0%, #2a1b4b 100%);
+    --bg-card: #0f131a;
+    --bg-elev: #121826;
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================
+   RESET / BASE
+   ========================= */
+* {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-base);
+    color: var(--color-text);
+    background-color: #0f131a;
     min-height: 100vh;
 }
 
-.page-container {
+/* =========================
+   LAYOUT (BEM)
+   ========================= */
+.page {
     max-width: 1200px;
     margin: 0 auto;
-    background: white;
     min-height: 100vh;
+    background: var(--color-white);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "footer";
 }
 
-/* ==== ШАПКА/УШАНКА ==== */
 .header {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    color: white;
+    grid-area: header;
+    background: var(--color-dark);
+    color: #fff;
     text-align: center;
-    padding: 30px;
-    font-size: 28px;
+    padding: var(--space-lg);
+}
+
+.header__title {
+    font-size: var(--fz-xxl);
     font-weight: 300;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
-/* ==== НАВИГАЦИЯ ==== */
 .nav {
-    background: #2c3e50;
-    padding: 20px 0;
+    grid-area: nav;
+    background: var(--color-dark);
 }
 
-.nav-list {
+.nav__list {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     gap: 25px;
+    padding: var(--space-md) 0;
 }
 
-.nav-item {
+.nav__item {
     margin: 0;
 }
 
-.nav-link {
-    color: white;
-    text-decoration: none;
+.nav__link {
+    display: block;
     padding: 12px 25px;
     border-radius: 25px;
-    transition: all 0.3s ease;
-    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    transition: background var(--tr), transform var(--tr);
 }
 
-.nav-link:hover {
+.nav__link:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
 }
 
-/* ==== ОСНОВНОЙ КОНТЕНТ ==== */
-.content {
-    padding: 40px;
+.nav__item--active .nav__link {
+    background: var(--color-accent);
+    font-weight: 700;
+}
+
+.main {
+    grid-area: main;
+    padding: var(--space-xl);
     max-width: 900px;
     margin: 0 auto;
 }
 
-/* ==== ПРОФИЛЬ ==== */
-.profile-header {
+.footer {
+    grid-area: footer;
+    background: var(--color-dark);
+    color: #fff;
     text-align: center;
-    margin-bottom: 40px;
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
 }
 
-.profile-title {
-    font-size: 32px;
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-weight: 300;
+.footer__text {
+    font-size: var(--fz-md);
 }
 
-.profile-photo {
+/* =========================
+   PROFILE (BEM)
+   ========================= */
+.profile {
+    margin-bottom: var(--space-xl);
+}
+
+.profile__card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    background: var(--bg-card);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+
+.profile__photo {
     width: 220px;
     height: 280px;
-    border-radius: 15px;
     object-fit: cover;
-    margin: 20px auto;
-    border: 4px solid #667eea;
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    border-radius: var(--radius);
+    border: 4px solid var(--color-accent);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.25);
 }
 
-.profile-name {
+.profile__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.profile__name {
     font-size: 24px;
-    color: #2c3e50;
-    margin: 10px 0;
-    font-weight: 500;
+    color: var(--color-main);
+    font-weight: 600;
 }
 
-.profile-group {
+.profile__group {
     font-size: 18px;
-    color: #7f8c8d;
-    margin: 5px 0;
+    color: var(--color-muted);
 }
 
-/* ==== ОБО МНЕ ==== */
-.about-me {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 25px;
-    border-radius: 15px;
-    margin: 30px 0;
-    border-left: 5px solid #667eea;
-    font-size: 16px;
+/* =========================
+   ABOUT (BEM)
+   ========================= */
+.about {
+    background: var(--bg-elev);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin: var(--space-lg) 0;
+    border-left: 5px solid var(--color-accent);
+}
+
+.about__title {
+    font-size: 1.5rem;
+    color: var(--color-main);
+    margin-bottom: var(--space-md);
+}
+
+.about__text {
     line-height: 1.8;
 }
 
-.about-me h2 {
-    color: #2c3e50;
-    margin-top: 0;
+/* =========================
+   SKILLS (BEM)
+   ========================= */
+.skills {
+    margin: var(--space-xl) 0;
 }
 
-/* ==== НАВЫКИ ==== */
-.skills-container {
+.skills__title {
+    color: var(--color-main);
+    margin-bottom: var(--space-md);
+    font-size: 1.5rem;
+}
+
+.skills__list {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    gap: 15px;
-    margin: 30px 0;
+    gap: var(--space-sm);
 }
 
-.skill-tag {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    color: white;
+.skill {
     padding: 12px 25px;
     border-radius: 25px;
-    font-weight: 600;
-    font-size: 14px;
-    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
-    transition: all 0.3s ease;
+    color: #fff;
+    font-weight: 700;
+    transition: transform var(--tr), box-shadow var(--tr);
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.28);
 }
 
-.skill-tag:hover {
+.skill:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
 }
 
-/* ==== ОПЫТ РАБОТЫ ==== */
-.experience-section {
-    margin-top: 50px;
+.skill--html {
+    background: #e34c26;
 }
 
-.section-title {
-    font-size: 28px;
+.skill--css {
+    background: #264de4;
+}
+
+.skill--js {
+    background: #f0db4f;
     color: #2c3e50;
-    text-align: center;
-    margin-bottom: 30px;
-    font-weight: 300;
 }
 
-.experience-card {
-    background: white;
-    padding: 25px;
-    margin: 20px 0;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    border-left: 4px solid #667eea;
-    transition: transform 0.3s ease;
+.skill--git {
+    background: #f1502f;
 }
 
-.experience-card:hover {
-    transform: translateX(5px);
+/* =========================
+   PROJECTS (BEM)
+   ========================= */
+.projects {
+    margin-top: var(--space-xl);
 }
 
-.experience-title {
-    font-size: 20px;
-    color: #2c3e50;
-    margin: 0 0 10px 0;
-    font-weight: 600;
+.projects__title {
+    color: var(--color-main);
+    margin-bottom: var(--space-md);
+    font-size: 1.5rem;
 }
 
-.experience-desc {
-    color: #7f8c8d;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* ==== ФУТЕР ==== */
-.footer {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    color: white;
-    text-align: center;
-    padding: 30px;
-    margin-top: 50px;
-}
-
-/* ==== СТИЛИ ДЛЯ КОНТАКТОВ ==== */
-.contacts-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.contact-info {
+.projects__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin: 40px 0;
+    gap: var(--space-md);
+}
+
+.project-card {
+    background: var(--bg-card);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--color-accent-3);
+    transition: transform var(--tr);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card__title {
+    color: var(--color-main);
+    margin-bottom: var(--space-sm);
+}
+
+.project-card__desc {
+    color: var(--color-muted);
+}
+
+/* =========================
+   NEWS (BEM)
+   ========================= */
+.news {
+    background: var(--bg-card);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.news__title {
+    color: var(--color-main);
+    margin-bottom: var(--space-md);
+    font-size: 1.5rem;
+}
+
+.news__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.news-item {
+    padding: var(--space-md);
+    border-left: 4px solid var(--color-accent);
+    background: var(--color-light);
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--tr), box-shadow var(--tr);
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.news-item__title {
+    color: var(--color-main);
+    margin-bottom: var(--space-sm);
+    font-weight: 700;
+}
+
+.news-item__date {
+    color: var(--color-accent-3);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+}
+
+.news-item__text {
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+/* =========================
+   CONTACTS (BEM)
+   ========================= */
+.contacts {
+    background: var(--bg-card);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.contacts__title {
+    color: var(--color-main);
+    margin-bottom: var(--space-md);
+    font-size: 1.5rem;
+}
+
+.contacts__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
 }
 
 .contact-item {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 25px;
-    border-radius: 12px;
-    border-left: 4px solid #667eea;
+    padding: var(--space-md);
+    background: var(--color-light);
+    border-radius: var(--radius);
+    text-align: center;
+    border-left: 4px solid var(--color-accent);
 }
 
-.contact-item h3 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-size: 18px;
+.contact-item__title {
+    color: var(--color-main);
+    margin-bottom: var(--space-sm);
+    font-size: 1.1rem;
 }
 
-.contact-form {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    margin-top: 40px;
+.contact-item__value {
+    color: var(--color-accent-3);
+    font-weight: 700;
 }
 
-.form-input,
-.form-textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-.form-textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.submit-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 15px 30px;
+.button {
+    padding: 12px 24px;
     border: none;
-    border-radius: 25px;
-    font-size: 16px;
+    border-radius: 30px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    font-weight: 700;
+    transition: transform var(--tr), box-shadow var(--tr), background var(--tr);
 }
 
-.submit-btn:hover {
+.button--primary {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-2) 100%);
+    color: #fff;
+}
+
+.button--primary:hover {
     transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(102, 126, 234, 0.35);
 }
 
-/* ==== СТИЛИ ДЛЯ ТОВАРОВ ==== */
-.goods-container {
+.button--danger {
+    background: var(--color-danger);
+    color: #fff;
+}
+
+.button--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* =========================
+   GOODS / PRODUCT CARD (BEM)
+   ========================= */
+.products {
+    margin-top: var(--space-lg);
+}
+
+.products__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-lg);
 }
 
 .product-card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--tr), box-shadow var(--tr);
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
 }
 
-.product-image {
+.product-card--selected {
+    outline: 3px solid var(--color-accent);
+}
+
+.product-card--discount .product-price {
+    color: var(--color-danger);
+}
+
+.product-card__image {
     height: 200px;
     overflow: hidden;
-    background: #f8f9fa;
+    background: var(--color-light);
 }
 
-.product-image img {
+.product-card__image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform var(--tr);
 }
 
-.product-card:hover .product-image img {
+.product-card:hover .product-card__image img {
     transform: scale(1.05);
 }
 
-.product-info {
-    padding: 20px;
+.product-card__info {
+    padding: var(--space-md);
 }
 
-.product-title {
-    color: #2c3e50;
-    margin-bottom: 10px;
+.product-card__title {
+    color: var(--color-main);
+    margin-bottom: var(--space-sm);
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-.product-description {
-    color: #7f8c8d;
-    margin-bottom: 15px;
+.product-card__desc {
+    color: var(--color-muted);
+    margin-bottom: var(--space-sm);
     line-height: 1.5;
     font-size: 14px;
 }
 
 .product-price {
     font-size: 24px;
-    font-weight: bold;
-    color: #e74c3c;
-    margin-bottom: 15px;
+    font-weight: 800;
+    color: var(--color-accent-3);
+    margin-bottom: var(--space-sm);
 }
 
-.buy-btn {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 25px;
-    font-size: 14px;
-    cursor: pointer;
+.product-card__buy {
     width: 100%;
-    transition: all 0.3s ease;
-    font-weight: 600;
 }
 
-.buy-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
-}
-
-/* ==== СТИЛИ ДЛЯ КНОПКИ "ПОЗВОНИТЕ МНЕ" ==== */
-.contact-actions {
-    text-align: center;
-    margin: 40px 0;
-}
-
-.call-btn {
-    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 25px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-}
-
-.call-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
-}
-/* ==== СТИЛИ ДЛЯ ПРАКТИК ==== */
-.practices-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.practice-item {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(102, 126, 234, 0.1);
-}
-
-.practice-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.practice-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
-}
-
-.practice-icon {
-    font-size: 48px;
-    margin-bottom: 20px;
-    display: block;
-}
-
-.practice-title {
-    color: #2c3e50;
-    font-size: 20px;
-    margin: 0 0 15px 0;
-    font-weight: 600;
-}
-
-.practice-description {
-    color: #7f8c8d;
-    line-height: 1.6;
-    margin: 0 0 20px 0;
-    font-size: 15px;
-}
-
-.practice-tags {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.practice-tag {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: 500;
-    box-shadow: 0 2px 8px rgba(79, 172, 254, 0.3);
-}
-/* ==== СТИЛИ ДЛЯ НОВОСТЕЙ ==== */
-.news-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.news-item {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    padding: 30px;
-    margin: 25px 0;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    border-left: 5px solid #667eea;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.news-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-    transition: left 0.5s ease;
-}
-
-.news-item:hover::before {
-    left: 100%;
-}
-
-.news-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.news-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.news-title {
-    color: #2c3e50;
-    font-size: 22px;
-    margin: 0;
-    font-weight: 600;
-    flex: 1;
-}
-
-.news-date {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.news-content {
-    color: #5a6c7d;
-    line-height: 1.6;
-    margin: 0;
-    font-size: 16px;
-    padding-left: 10px;
-    border-left: 3px solid #e9ecef;
-}
-
-/* ==== АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ ==== */
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media (max-width: 768px) {
-    .nav-list {
+    .nav__list {
         flex-direction: column;
         gap: 10px;
     }
 
-    .content {
-        padding: 20px;
+    .main {
+        padding: var(--space-lg);
     }
 
-    .skills-container {
+    .projects__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .products__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .profile__card {
         flex-direction: column;
-        align-items: center;
+        text-align: center;
     }
+}
 
-    .goods-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .contact-info {
-        grid-template-columns: 1fr;
-    }
-
-    .product-card {
-        margin: 0 10px;
-    }
-
-    .call-btn {
-        width: 100%;
-        padding: 12px 20px;
-    }
+html {
+    background-color: #161414;
 }
